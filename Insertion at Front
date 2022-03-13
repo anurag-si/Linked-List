@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class Node{
+	public:
+		int data;
+		Node* next;
+};
+
+void printList(Node* n) // this is pointer to a pointer means i am passing head which is a pointer but here it converts into a value, so n now has data and next.
+{
+	while(n != NULL)
+	{
+		cout<< n->data << " ";
+		n= n->next;
+	}
+}
+
+void addAtFront(Node** q, int new_data) // here i am passing address of p, and q is a doubple pointer which contains address of another pointer, 
+//which is address of the p at the moment
+
+{
+	Node* new_Node= new Node();
+	
+	new_Node->data= new_data;
+	new_Node->next= (*q);
+	
+ 	
+	(*q)=new_Node;
+}
+
+int main()
+{
+	Node* p= NULL; //here p is a pointer block which has a address
+	p= new Node();
+	
+	p->data = 1;
+	p->next=NULL;
+	
+	addAtFront(&p, 4);//here i am passing it's address
+	
+	printList(p);
+	
+	
+}
